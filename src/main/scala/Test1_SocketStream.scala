@@ -23,6 +23,7 @@ object Test1_SocketStream {
     val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
     val ssc = new StreamingContext(conf, Seconds(2))
 
+
     // 实时流监听的是  localhost,  9999端口
     val lines: ReceiverInputDStream[String] = ssc.socketTextStream("localhost", 9999)
 
