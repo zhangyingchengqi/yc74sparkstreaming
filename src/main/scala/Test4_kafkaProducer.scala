@@ -20,7 +20,7 @@ object Test4_kafkaProducer {
 
     val props = new Properties()
     props.put("bootstrap.servers", "localhost:9092,localhost:9093,localhost:9094")
-    props.put("acks", "all")   // 确认的级别
+    props.put("acks", "all")   // 确认的级别  ISR
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")   //生产端用序列化
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
