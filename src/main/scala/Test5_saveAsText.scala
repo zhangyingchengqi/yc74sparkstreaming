@@ -2,6 +2,9 @@ import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
+/*
+注意:要提供一个类，来动态的生成数据文件到  input
+ */
 object Test5_saveAsText {
   def main(args: Array[String]): Unit = {
 
