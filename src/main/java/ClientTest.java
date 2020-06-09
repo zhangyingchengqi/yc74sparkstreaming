@@ -34,7 +34,7 @@ class Task implements Runnable {
 			PrintWriter out = new PrintWriter(oos, true);
 			while (flag) {
 				Thread.sleep(   r.nextInt(  3000 ));
-				String s = "char:" + (char) r.nextInt(128);   //  ASCII码
+				String s = "char:" + (char) r.nextInt(128);   //  ASCII码:注意字符中有各种字符，如换行，退格，响铃等.
 				out.println(s);
 				out.flush();
 			}

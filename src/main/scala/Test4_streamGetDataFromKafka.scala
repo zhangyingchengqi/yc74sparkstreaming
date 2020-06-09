@@ -37,10 +37,10 @@ object Test4_streamGetDataFromKafka {
       Subscribe[String, String](topics, kafkaParams)    //     SubscribePattern:主题名由正则表示    , Subscribe:主题名固定   Assign:固定分区
     )
 
-    val rdds = stream.cache()  //如不加这一句，则:   KafkaConsumer is not safe for multi-threaded access
+    stream.cache()  //如不加这一句，则:   KafkaConsumer is not safe for multi-threaded access
 
     // type为0的数据
-    val nameAddrDStream=rdds.map(  _.value   ).filter(   record=>{
+    val nameAddrDStream=stream.map(  _.value   ).filter(   record=>{
       val items=record.split("\t")
       items(2).toInt==0        //  items(2)==0      ->   items->  String[]     ->  String
     }).map(    record=>{

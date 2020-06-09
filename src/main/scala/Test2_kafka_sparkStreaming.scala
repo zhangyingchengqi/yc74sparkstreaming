@@ -55,6 +55,12 @@ object Test2_kafka_sparkStreaming {
     //要订阅的主题
     val topics = Array("topic74streaming")
     //创建DStream
+    /*
+    kafka本地策略（  LocationStrategies ):
+    1. PreferConsistent : 在可用的 executors 上均匀分布分区
+    2. PreferBrokers: 如果 executor 与 Kafka 的代理节点在同一台物理机上，使用 PreferBrokers，会更倾向于在该节点上安排 KafkaLeader 对应的分区,以减少数据的网络传输。
+    3. PreferFixed： 如果发生分区之间数据负载倾斜，使用 PreferFixed。可以指定分区和主机之间的映射（任何未指定的分区将使用相同的位置）
+     */
     val stream = KafkaUtils.createDirectStream[String, String](
       ssc,
       PreferConsistent,
